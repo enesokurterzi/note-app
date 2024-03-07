@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    alias(libs.plugins.googleDaggerHiltAndroid)
+    alias(libs.plugins.googleDevtoolsKsp)
 }
 
 android {
@@ -40,7 +42,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.10"
     }
     packaging {
         resources {
@@ -66,4 +68,26 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //Dagger - Hilt
+    implementation (libs.hilt)
+    ksp (libs.hilt.compiler)
+    ksp (libs.androidx.hilt.compiler)
+
+    // Compose dependencies
+    implementation (libs.androidx.lifecycle.viewmodel.compose)
+    implementation (libs.androidx.navigation.compose)
+    implementation (libs.androidx.material.icons.extended)
+
+    // Coroutines
+    implementation (libs.jetbrains.kotlinx.coroutines.core)
+    implementation (libs.jetbrains.kotlinx.coroutines.android)
+
+    // Room
+    implementation (libs.androidx.room.runtime)
+    ksp (libs.androidx.room.compiler)
+
+    // Kotlin Extensions and Coroutines support for Room
+    implementation (libs.androidx.room.ktx)
+
 }
