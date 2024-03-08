@@ -78,6 +78,7 @@ dependencies {
     implementation (libs.androidx.lifecycle.viewmodel.compose)
     implementation (libs.androidx.navigation.compose)
     implementation (libs.androidx.material.icons.extended)
+    implementation (libs.androidx.hilt.navigation.compose)
 
     // Coroutines
     implementation (libs.jetbrains.kotlinx.coroutines.core)
