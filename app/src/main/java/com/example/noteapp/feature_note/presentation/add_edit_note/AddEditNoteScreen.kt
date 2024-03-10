@@ -55,7 +55,7 @@ fun AddEditNoteScreen(
 
     val noteBackgroundAnimatable = remember {
         Animatable(
-            Color(if (noteColor != 1) noteColor else viewmodel.noteColor.intValue)
+            Color(if (noteColor != -1) noteColor else viewmodel.noteColor.intValue)
         )
     }
     val scope = rememberCoroutineScope()
@@ -111,7 +111,8 @@ fun AddEditNoteScreen(
                             .background(color)
                             .border(
                                 3.dp,
-                                color = if (viewmodel.noteColor.intValue == colorInt) Color.Black else Color.Transparent
+                                color = if (viewmodel.noteColor.intValue == colorInt) Color.Black else Color.Transparent,
+                                shape = CircleShape
                             )
                             .clickable {
                                 scope.launch {
@@ -137,7 +138,7 @@ fun AddEditNoteScreen(
                 },
                 isHintVisible = titleState.isHintVisible,
                 singleLine = true,
-                textStyle = MaterialTheme.typography.headlineMedium
+                textStyle = MaterialTheme.typography.headlineSmall
             )
             Spacer(modifier = Modifier.height(16.dp))
             TransparentHintTextField(
@@ -151,7 +152,7 @@ fun AddEditNoteScreen(
                 },
                 isHintVisible = contentState.isHintVisible,
                 singleLine = true,
-                textStyle = MaterialTheme.typography.bodySmall,
+                textStyle = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.fillMaxHeight()
             )
         }
