@@ -2,6 +2,8 @@ package com.example.noteapp.feature_note.presentation.notes.components
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.RadioButton
@@ -24,6 +26,7 @@ fun DefaultRadioButton(
         verticalAlignment = Alignment.CenterVertically
     ) {
         RadioButton(
+            modifier = Modifier.padding(8.dp).size(20.dp),
             selected = selected,
             onClick = onSelect,
             colors = RadioButtonDefaults.colors(
@@ -31,7 +34,6 @@ fun DefaultRadioButton(
                 unselectedColor = MaterialTheme.colorScheme.onBackground
             )
         )
-        Spacer(modifier = Modifier.width(8.dp))
         Text(text = text, style = MaterialTheme.typography.bodySmall)
     }
 }
