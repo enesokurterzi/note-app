@@ -1,5 +1,6 @@
 package com.example.noteapp.feature_note.presentation.notes
 
+import android.app.Application
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -17,8 +18,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NotesViewModel @Inject constructor(
-    private val noteUseCases: NoteUseCases
+    private val noteUseCases: NoteUseCases,
+    application: Application
 ) : ViewModel() {
+
+    private val resources = application.resources
 
     private val _state = mutableStateOf(NotesState())
     val state: State<NotesState> = _state
@@ -35,7 +39,8 @@ class NotesViewModel @Inject constructor(
         when (event) {
             is NotesEvent.Order -> {
                 if (state.value.noteOrder::class == event.noteOrder::class &&
-                    state.value.noteOrder.orderType == event.noteOrder.orderType) {
+                    state.value.noteOrder.orderType == event.noteOrder.orderType
+                ) {
                     return
                 }
                 getNotes(event.noteOrder)
@@ -50,7 +55,9 @@ class NotesViewModel @Inject constructor(
 
             is NotesEvent.RestoreNote -> {
                 viewModelScope.launch {
-                    noteUseCases.addNoteUseCase(recentlyDeletedNote ?: return@launch)
+                    recentlyDeletedNote?.let { note ->
+                        noteUseCases.addNoteUseCase(note, resources)
+                    } ?: return@launch
                     recentlyDeletedNote = null
                 }
             }

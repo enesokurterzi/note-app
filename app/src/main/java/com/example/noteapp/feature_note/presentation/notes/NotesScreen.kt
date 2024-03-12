@@ -33,9 +33,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.noteapp.R
 import com.example.noteapp.feature_note.presentation.notes.components.NoteItem
 import com.example.noteapp.feature_note.presentation.notes.components.OrderSection
 import com.example.noteapp.feature_note.presentation.util.Screen
@@ -49,6 +52,7 @@ fun NotesScreen(
     val state = viewModel.state.value
     val snackBarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
+    val context = LocalContext.current
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackBarHostState) },
@@ -59,7 +63,10 @@ fun NotesScreen(
                 },
                 containerColor = MaterialTheme.colorScheme.primary
             ) {
-                Icon(imageVector = Icons.Default.Add, contentDescription = "Add note")
+                Icon(
+                    imageVector = Icons.Default.Add,
+                    contentDescription = stringResource(id = R.string.notes_screen_FAB_icon_description)
+                )
             }
         }
     ) {
@@ -75,7 +82,7 @@ fun NotesScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Your note",
+                    text = stringResource(id = R.string.notes_screen_main_text),
                     style = MaterialTheme.typography.headlineMedium
                 )
                 IconButton(
@@ -85,7 +92,7 @@ fun NotesScreen(
                 ) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.Sort,
-                        contentDescription = "Sort"
+                        contentDescription = stringResource(id = R.string.notes_screen_sort_icon_description)
                     )
                 }
             }
@@ -122,8 +129,8 @@ fun NotesScreen(
                             viewModel.onEvent(NotesEvent.DeleteNote(note))
                             scope.launch {
                                 val result = snackBarHostState.showSnackbar(
-                                    message = "Note deleted",
-                                    actionLabel = "Undo"
+                                    message = context.getString(R.string.notes_screen_onDelete_snackBar_message),
+                                    actionLabel = context.getString(R.string.notes_screen_onDelete_snackBar_actionLabel)
                                 )
                                 if (result == SnackbarResult.ActionPerformed) {
                                     viewModel.onEvent(NotesEvent.RestoreNote)
