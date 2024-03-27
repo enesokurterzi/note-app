@@ -17,4 +17,17 @@
     <string name="orderSection_button_text_descending">"Descending"</string>
     <string name="noteItem_icon_description">"Delete note"</string>
     <string name="addEditNote_screen_FAB_icon_description">"Save note"</string>
+
+<!--    for feature login-->
+    <string name="welcome">"Hey!"</string>
+    <string name="welcome_login">"Welcome Back"</string>
+    <string name="welcome_sign_up">"Join Now"</string>
+    <string name="login_title">"Login"</string>
+    <string name="login_email">"Email"</string>
+    <string name="login_password">"Password"</string>
+    <string name="sign_up_title">"Sign Up"</string>
+    <string name="sign_up_email">"Enter email id"</string>
+    <string name="sign_up_password">"Create Password"</string>
+
+
 </resources>

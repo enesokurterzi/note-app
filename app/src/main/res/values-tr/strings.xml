@@ -18,4 +18,16 @@
     <string name="orderSection_button_text_descending">"Azalan"</string>
     <string name="noteItem_icon_description">"Notu sil"</string>
     <string name="addEditNote_screen_FAB_icon_description">"Notu kaydet"</string>
+
+    <!--    for feature login-->
+    <string name="welcome">"Merhaba!"</string>
+    <string name="welcome_login">"Hoşgeldin"</string>
+    <string name="welcome_sign_up">"Şimdi katıl"</string>
+    <string name="login_title">"Giriş"</string>
+    <string name="login_email">"Email"</string>
+    <string name="login_password">"Şifre"</string>
+    <string name="sign_up_title">"Kayıt ol"</string>
+    <string name="sign_up_email">"Email adresini gir"</string>
+    <string name="sign_up_password">"Şifre oluştur"</string>
+
 </resources>
