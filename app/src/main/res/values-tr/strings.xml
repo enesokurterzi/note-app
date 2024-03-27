@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Note Uygulaması</string>
+    <string name="app_name">Not Uygulaması</string>
     <string name="note_title_hint">"Başlık girin…"</string>
     <string name="note_content_hint">"İçerik girin…"</string>
     <string name="save_note_error_alternative">"Not kaydedilemiyor"</string>
