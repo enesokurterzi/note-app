@@ -18,11 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NotesViewModel @Inject constructor(
-    private val noteUseCases: NoteUseCases,
-    application: Application
+    private val noteUseCases: NoteUseCases
 ) : ViewModel() {
-
-    private val resources = application.resources
 
     private val _state = mutableStateOf(NotesState())
     val state: State<NotesState> = _state
@@ -56,7 +53,7 @@ class NotesViewModel @Inject constructor(
             is NotesEvent.RestoreNote -> {
                 viewModelScope.launch {
                     recentlyDeletedNote?.let { note ->
-                        noteUseCases.addNoteUseCase(note, resources)
+                        noteUseCases.addNoteUseCase(note)
                     } ?: return@launch
                     recentlyDeletedNote = null
                 }

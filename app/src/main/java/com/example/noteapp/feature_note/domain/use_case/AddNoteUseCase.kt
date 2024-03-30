@@ -11,12 +11,12 @@ class AddNoteUseCase(
 ) {
 
     @Throws(InvalidNoteException::class)
-    suspend operator fun invoke(note: Note, resources: Resources) {
+    suspend operator fun invoke(note: Note) {
         if (note.title.isBlank()) {
-            throw InvalidNoteException(resources.getString(R.string.save_note_error_title))
+            throw InvalidNoteException(R.string.save_note_error_title.toString())
         }
         if (note.content.isBlank()) {
-            throw InvalidNoteException(resources.getString(R.string.save_note_error_content))
+            throw InvalidNoteException(R.string.save_note_error_content.toString())
         }
         repository.insertNote(note)
     }

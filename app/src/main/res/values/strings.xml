@@ -17,6 +17,7 @@
     <string name="orderSection_button_text_descending">"Descending"</string>
     <string name="noteItem_icon_description">"Delete note"</string>
     <string name="addEditNote_screen_FAB_icon_description">"Save note"</string>
+    <string name="blank">""</string>
 
 <!--    for feature login-->
     <string name="welcome">"Hey!"</string>
