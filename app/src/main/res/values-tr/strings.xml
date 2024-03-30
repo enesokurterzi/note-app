@@ -18,6 +18,7 @@
     <string name="orderSection_button_text_descending">"Azalan"</string>
     <string name="noteItem_icon_description">"Notu sil"</string>
     <string name="addEditNote_screen_FAB_icon_description">"Notu kaydet"</string>
+    <string name="blank">""</string>
 
     <!--    for feature login-->
     <string name="welcome">"Merhaba!"</string>

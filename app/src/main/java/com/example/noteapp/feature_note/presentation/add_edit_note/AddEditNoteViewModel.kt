@@ -23,21 +23,18 @@ import javax.inject.Inject
 class AddEditNoteViewModel @Inject constructor(
     private val noteUseCases: NoteUseCases,
     savedStateHandle: SavedStateHandle,
-    application: Application
 ) : ViewModel() {
-
-    private val resources = application.resources
 
     private val _noteTitle = mutableStateOf(
         NoteTextFieldState(
-            hint = resources.getString(R.string.note_title_hint)
+            hint = R.string.note_title_hint
         )
     )
     val noteTitle: State<NoteTextFieldState> = _noteTitle
 
     private val _noteContent = mutableStateOf(
         NoteTextFieldState(
-            hint = resources.getString(R.string.note_content_hint)
+            hint = R.string.note_content_hint
         )
     )
     val noteContent: State<NoteTextFieldState> = _noteContent
@@ -113,14 +110,13 @@ class AddEditNoteViewModel @Inject constructor(
                                 timestamp = System.currentTimeMillis(),
                                 color = noteColor.intValue,
                                 id = currentNoteId
-                            ),
-                            resources = resources
+                            )
                         )
                         _eventFlow.emit(UiEvent.SaveNote)
                     } catch (e: InvalidNoteException) {
                         _eventFlow.emit(
                             UiEvent.ShowSnackBar(
-                                message = e.message ?: resources.getString(R.string.save_note_error_alternative)
+                                message = e.message?.toInt() ?: R.string.save_note_error_alternative
                             )
                         )
                     }
@@ -130,7 +126,7 @@ class AddEditNoteViewModel @Inject constructor(
     }
 
     sealed class UiEvent {
-        data class ShowSnackBar(val message: String) : UiEvent()
+        data class ShowSnackBar(val message: Int) : UiEvent()
         data object SaveNote : UiEvent()
     }
 }

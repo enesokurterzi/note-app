@@ -1,5 +1,6 @@
 package com.example.noteapp.feature_note.presentation.add_edit_note
 
+import android.app.Application
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -34,6 +35,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -50,6 +52,7 @@ fun AddEditNoteScreen(
     noteColor: Int,
     viewmodel: AddEditNoteViewModel = hiltViewModel()
 ) {
+    val resources = LocalContext.current.resources
     val titleState = viewmodel.noteTitle.value
     val contentState = viewmodel.noteContent.value
 
@@ -67,7 +70,7 @@ fun AddEditNoteScreen(
             when (event) {
                 is AddEditNoteViewModel.UiEvent.ShowSnackBar -> {
                     snackBarHostState.showSnackbar(
-                        message = event.message
+                        message = resources.getString(event.message)
                     )
                 }
 
@@ -135,7 +138,7 @@ fun AddEditNoteScreen(
             Spacer(modifier = Modifier.height(16.dp))
             TransparentHintTextField(
                 text = titleState.text,
-                hint = titleState.hint,
+                hint = resources.getString(titleState.hint),
                 onValueChange = {
                     viewmodel.onEvent(AddEditNoteEvent.EnteredTitle(it))
                 },
@@ -149,7 +152,7 @@ fun AddEditNoteScreen(
             Spacer(modifier = Modifier.height(16.dp))
             TransparentHintTextField(
                 text = contentState.text,
-                hint = contentState.hint,
+                hint = resources.getString(contentState.hint),
                 onValueChange = {
                     viewmodel.onEvent(AddEditNoteEvent.EnteredContent(it))
                 },
