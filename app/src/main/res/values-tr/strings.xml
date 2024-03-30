@@ -29,5 +29,6 @@
     <string name="sign_up_title">"Kayıt ol"</string>
     <string name="sign_up_email">"Email adresini gir"</string>
     <string name="sign_up_password">"Şifre oluştur"</string>
+    <string name="or_continue">"Ya da devam etmek isterseniz"</string>
 
 </resources>

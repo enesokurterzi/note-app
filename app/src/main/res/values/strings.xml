@@ -28,6 +28,7 @@
     <string name="sign_up_title">"Sign Up"</string>
     <string name="sign_up_email">"Enter email id"</string>
     <string name="sign_up_password">"Create Password"</string>
+    <string name="or_continue">"Or Continue With"</string>
 
 
 </resources>
