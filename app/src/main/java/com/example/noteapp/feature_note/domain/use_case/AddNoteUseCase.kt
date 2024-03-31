@@ -1,6 +1,5 @@
 package com.example.noteapp.feature_note.domain.use_case
 
-import android.content.res.Resources
 import com.example.noteapp.R
 import com.example.noteapp.feature_note.domain.model.InvalidNoteException
 import com.example.noteapp.feature_note.domain.model.Note
