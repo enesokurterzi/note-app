@@ -1,6 +1,5 @@
 package com.example.noteapp.feature_note.presentation.add_edit_note
 
-import android.app.Application
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
