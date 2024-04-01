@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -23,19 +24,27 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import com.example.noteapp.R
+import com.example.noteapp.feature_login.presentation.login.UserTextFieldState
 
 @Composable
 fun PagerContent(
-    emailText: String,
-    passwordText: String,
-    buttonText: String,
+    emailTitle: String,
+    emailState: UserTextFieldState,
+    onEmailChange: (String) -> Unit,
+    passwordTitle: String,
+    passwordState: UserTextFieldState,
+    onPasswordChange: (String) -> Unit,
+    buttonTitle: String,
+    onButtonClick: () -> Unit
 ) {
-    var emailValue by rememberSaveable { mutableStateOf("") }
-    var passwordValue by rememberSaveable { mutableStateOf("") }
+    val resources = LocalContext.current.resources
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -44,7 +53,7 @@ fun PagerContent(
         Text(
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.fillMaxWidth(0.8f),
-            text = emailText,
+            text = emailTitle,
             color = MaterialTheme.colorScheme.primary
         )
         OutlinedTextField(
@@ -56,14 +65,19 @@ fun PagerContent(
             ),
             singleLine = true,
             shape = RoundedCornerShape(32.dp),
-            value = emailValue,
-            onValueChange = { emailValue = it }
+            isError = emailState.isErrorVisible,
+            supportingText = {
+                if (emailState.isErrorVisible) {
+                    Text(text = resources.getString(emailState.error))
+                }
+            },
+            value = emailState.text,
+            onValueChange = onEmailChange
         )
-        Spacer(modifier = Modifier.height(16.dp))
         Text(
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.fillMaxWidth(0.8f),
-            text = passwordText,
+            text = passwordTitle,
             color = MaterialTheme.colorScheme.primary
         )
         OutlinedTextField(
@@ -75,16 +89,24 @@ fun PagerContent(
             ),
             singleLine = true,
             shape = RoundedCornerShape(32.dp),
-            value = passwordValue,
-            onValueChange = { passwordValue = it }
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            visualTransformation = PasswordVisualTransformation(),
+            isError = passwordState.isErrorVisible,
+            supportingText = {
+                if (passwordState.isErrorVisible) {
+                    Text(text = resources.getString(passwordState.error))
+                }
+            },
+            value = passwordState.text,
+            onValueChange = onPasswordChange
         )
         Spacer(modifier = Modifier.height(16.dp))
         Button(
             modifier = Modifier.fillMaxWidth(0.85f),
             shape = RoundedCornerShape(16.dp),
-            onClick = {}
+            onClick = onButtonClick
         ) {
-            Text(style = MaterialTheme.typography.titleMedium, text = buttonText)
+            Text(style = MaterialTheme.typography.titleMedium, text = buttonTitle)
         }
         Spacer(modifier = Modifier.height(8.dp))
         Text(

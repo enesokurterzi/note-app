@@ -31,5 +31,11 @@
     <string name="sign_up_email">"Email adresini gir"</string>
     <string name="sign_up_password">"Şifre oluştur"</string>
     <string name="or_continue">"Ya da devam etmek isterseniz"</string>
+    <string name="login_error_verified">"E-posta doğrulanmadı, lütfen e-posta adresinizi doğrulayın."</string>
+    <string name="login_error_alternative">"Bunu yapamadık, bir şeyler ters gitti."</string>
+    <string name="sign_up_successful">"Hesap başarıyla oluşturuldu, doğrulamak için e-postayı kontrol edin."</string>
+    <string name="sign_up_error_invalid_email">"E-posta geçersiz."</string>
+    <string name="sign_up_error_invalid_password">"Şifre en az 6 karakter uzunluğunda olmalıdır."</string>
+    <string name="sign_up_error_email_already_in_use">"Bu mail adresi başka bir hesap tarafından kullanılıyor."</string>
 
 </resources>
