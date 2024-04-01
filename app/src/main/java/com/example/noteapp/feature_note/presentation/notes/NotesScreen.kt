@@ -1,6 +1,7 @@
 package com.example.noteapp.feature_note.presentation.notes
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -41,6 +42,7 @@ import com.example.noteapp.feature_note.presentation.notes.components.OrderSecti
 import com.example.noteapp.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun NotesScreen(
     navController: NavController,
@@ -66,11 +68,11 @@ fun NotesScreen(
                 )
             }
         }
-    ) {
+    ) { paddingValues ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(it)
+                .padding(paddingValues)
                 .padding(16.dp)
         ) {
             Row(
@@ -109,7 +111,7 @@ fun NotesScreen(
             LazyColumn(
                 modifier = Modifier.fillMaxSize()
             ) {
-                items(state.notes) { note ->
+                items(state.notes, key = {it.id ?: 0}) { note ->
                     NoteItem(
                         note = note,
                         modifier = Modifier
@@ -119,7 +121,7 @@ fun NotesScreen(
                                     Screen.AddEditNoteScreen.route +
                                             "?noteId=${note.id}&noteColor=${note.color}"
                                 )
-                            },
+                            }.animateItemPlacement(),
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))
                             scope.launch {
