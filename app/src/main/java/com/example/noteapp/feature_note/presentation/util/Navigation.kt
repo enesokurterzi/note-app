@@ -10,6 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.noteapp.feature_login.presentation.login.LoginScreen
 import com.example.noteapp.feature_note.presentation.add_edit_note.AddEditNoteScreen
 import com.example.noteapp.feature_note.presentation.notes.NotesScreen
 
@@ -18,8 +19,11 @@ fun Navigation() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Screen.NotesScreen.route
+        startDestination = Screen.LoginScreen.route
     ) {
+        composable(route = Screen.LoginScreen.route) {
+            LoginScreen(navController = navController)
+        }
         composable(
             Screen.NotesScreen.route,
             enterTransition = {
@@ -32,7 +36,8 @@ fun Navigation() {
                 scaleOut(
                     animationSpec = tween(300),
                     targetScale = 0.8f
-                ) }
+                )
+            }
         ) {
             NotesScreen(navController = navController)
         }
