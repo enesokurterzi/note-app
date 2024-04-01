@@ -26,6 +26,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -35,9 +36,11 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavController
 import com.example.noteapp.R
 import com.example.noteapp.feature_note.domain.model.Note
@@ -49,7 +52,8 @@ import kotlinx.coroutines.launch
 fun AddEditNoteScreen(
     navController: NavController,
     noteColor: Int,
-    viewmodel: AddEditNoteViewModel = hiltViewModel()
+    viewmodel: AddEditNoteViewModel = hiltViewModel(),
+    lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current
 ) {
     val resources = LocalContext.current.resources
     val titleState = viewmodel.noteTitle.value
@@ -77,6 +81,12 @@ fun AddEditNoteScreen(
                     navController.navigateUp()
                 }
             }
+        }
+    }
+
+    DisposableEffect(lifecycleOwner) {
+        onDispose {
+            viewmodel.onEvent(AddEditNoteEvent.SaveNote)
         }
     }
 
