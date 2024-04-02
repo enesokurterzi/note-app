@@ -95,7 +95,7 @@ fun AddEditNoteScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    viewmodel.onEvent(AddEditNoteEvent.SaveNote)
+                    navController.navigateUp()
                 },
                 containerColor = MaterialTheme.colorScheme.primary
             ) {
