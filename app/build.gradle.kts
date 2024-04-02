@@ -88,11 +88,11 @@ dependencies {
     implementation (libs.jetbrains.kotlinx.coroutines.android)
 
     // Room
-    implementation (libs.androidx.room.runtime)
-    ksp (libs.androidx.room.compiler)
+//    implementation (libs.androidx.room.runtime)
+//    ksp (libs.androidx.room.compiler)
 
     // Kotlin Extensions and Coroutines support for Room
-    implementation (libs.androidx.room.ktx)
+//    implementation (libs.androidx.room.ktx)
 
     // splash screen
     implementation(libs.androidx.splashscreen)

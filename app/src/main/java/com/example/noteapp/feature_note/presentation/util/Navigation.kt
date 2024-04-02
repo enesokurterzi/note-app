@@ -47,8 +47,8 @@ fun Navigation() {
                 navArgument(
                     name = "noteId"
                 ) {
-                    type = NavType.IntType
-                    defaultValue = -1
+                    type = NavType.StringType
+                    defaultValue = "-1"
                 },
                 navArgument(
                     name = "noteColor"

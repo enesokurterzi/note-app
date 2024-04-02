@@ -111,7 +111,7 @@ fun NotesScreen(
             LazyColumn(
                 modifier = Modifier.fillMaxSize()
             ) {
-                items(state.notes, key = {it.id ?: 0}) { note ->
+                items(state.notes, key = {it.id ?: it.timestamp}) { note ->
                     NoteItem(
                         note = note,
                         modifier = Modifier
