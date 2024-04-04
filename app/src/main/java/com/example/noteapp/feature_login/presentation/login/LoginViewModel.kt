@@ -31,6 +31,11 @@ class LoginViewModel @Inject constructor(
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
 
+    fun checkCurrentUser(): Boolean {
+        userUseCases.getUserUseCase()?.let { return true }
+        return false
+    }
+
     fun onEvent(event: LoginEvent) {
         when (event) {
             is LoginEvent.EnteredEmail -> {

@@ -9,6 +9,7 @@ data class UserUseCases (
     val loginUseCase: LoginUseCase,
     val signUpUseCase: SignUpUseCase,
     val signOutUseCase: SignOutUseCase,
+    val getUserUseCase: GetUserUseCase
 )
 
 @Throws(InvalidEmailException::class, InvalidPasswordException::class)

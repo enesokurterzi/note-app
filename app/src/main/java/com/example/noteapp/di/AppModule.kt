@@ -2,6 +2,7 @@ package com.example.noteapp.di
 
 import com.example.noteapp.feature_login.data.repository.UserRepositoryImpl
 import com.example.noteapp.feature_login.domain.repository.UserRepository
+import com.example.noteapp.feature_login.domain.use_case.GetUserUseCase
 import com.example.noteapp.feature_login.domain.use_case.LoginUseCase
 import com.example.noteapp.feature_login.domain.use_case.SignOutUseCase
 import com.example.noteapp.feature_login.domain.use_case.SignUpUseCase
@@ -73,7 +74,8 @@ object AppModule {
         return UserUseCases(
             loginUseCase = LoginUseCase(repository),
             signUpUseCase = SignUpUseCase(repository),
-            signOutUseCase = SignOutUseCase(repository)
+            signOutUseCase = SignOutUseCase(repository),
+            getUserUseCase = GetUserUseCase(repository)
         )
     }
 

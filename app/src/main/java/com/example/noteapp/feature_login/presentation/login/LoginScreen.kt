@@ -52,14 +52,14 @@ fun LoginScreen(
 
     val snackBarHostState = remember { SnackbarHostState() }
 
-
-
     LaunchedEffect(key1 = true) {
+        if (viewModel.checkCurrentUser()) navController.navigate(Screen.NotesScreen.route)
         viewModel.eventFlow.collectLatest { event ->
             when (event) {
                 is LoginViewModel.UiEvent.Login -> {
                     navController.navigate(Screen.NotesScreen.route)
                 }
+
                 is LoginViewModel.UiEvent.ShowSnackBar -> {
                     snackBarHostState.showSnackbar(
                         message = with(event) {

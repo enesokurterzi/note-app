@@ -4,6 +4,7 @@ import com.example.noteapp.feature_login.domain.model.NotVerifiedEmailException
 import com.example.noteapp.feature_login.domain.model.User
 import com.example.noteapp.feature_login.domain.repository.UserRepository
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.tasks.await
 
 class UserRepositoryImpl(
@@ -30,5 +31,9 @@ class UserRepositoryImpl(
 
     override fun signOut() {
         firebaseAuth.signOut()
+    }
+
+    override fun getUser(): FirebaseUser? {
+        return firebaseAuth.currentUser
     }
 }
