@@ -52,13 +52,19 @@ fun LoginScreen(
 
     val snackBarHostState = remember { SnackbarHostState() }
 
+    val navigateToNotes = {
+        navController.navigate(Screen.NotesScreen.route) {
+            popUpTo(navController.graph.id) {
+                inclusive = true
+            }
+        }
+    }
+
     LaunchedEffect(key1 = true) {
-        if (viewModel.checkCurrentUser()) navController.navigate(Screen.NotesScreen.route)
+        if (viewModel.checkCurrentUser()) navigateToNotes.invoke()
         viewModel.eventFlow.collectLatest { event ->
             when (event) {
-                is LoginViewModel.UiEvent.Login -> {
-                    navController.navigate(Screen.NotesScreen.route)
-                }
+                is LoginViewModel.UiEvent.Login -> navigateToNotes.invoke()
 
                 is LoginViewModel.UiEvent.ShowSnackBar -> {
                     snackBarHostState.showSnackbar(

@@ -104,7 +104,11 @@ fun NotesScreen(
                             text = { Text(text = stringResource(id = R.string.notes_screen_menu_log_out)) },
                             onClick = {
                                 viewModel.onEvent(NotesEvent.LogOut)
-                                navController.navigate(Screen.LoginScreen.route)
+                                navController.navigate(Screen.LoginScreen.route) {
+                                    popUpTo(navController.graph.id) {
+                                        inclusive = true
+                                    }
+                                }
                             }
                         )
                     }
