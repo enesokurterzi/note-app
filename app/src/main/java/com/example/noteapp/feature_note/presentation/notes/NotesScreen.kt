@@ -3,9 +3,7 @@ package com.example.noteapp.feature_note.presentation.notes
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,6 +14,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Sort
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -27,12 +30,13 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.DpOffset
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -42,7 +46,7 @@ import com.example.noteapp.feature_note.presentation.notes.components.OrderSecti
 import com.example.noteapp.feature_note.presentation.util.Screen
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalMaterial3Api::class)
 @Composable
 fun NotesScreen(
     navController: NavController,
@@ -52,6 +56,7 @@ fun NotesScreen(
     val snackBarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
+    val showMenu = remember { mutableStateOf(false) }
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackBarHostState) },
@@ -67,34 +72,49 @@ fun NotesScreen(
                     contentDescription = stringResource(id = R.string.notes_screen_FAB_icon_description)
                 )
             }
+        },
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = { Text(text = stringResource(id = R.string.notes_screen_main_text)) },
+                navigationIcon = {
+                    IconButton(
+                        onClick = {
+                            viewModel.onEvent(NotesEvent.ToggleOrderSection)
+                        },
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.Sort,
+                            contentDescription = stringResource(id = R.string.notes_screen_sort_icon_description)
+                        )
+                    }
+                },
+                actions = {
+                    IconButton(onClick = { showMenu.value = true }) {
+                        Icon(
+                            imageVector = Icons.Default.MoreVert,
+                            contentDescription = stringResource(id = R.string.notes_screen_more_icon_description)
+                        )
+                    }
+                    DropdownMenu(
+                        expanded = showMenu.value,
+                        onDismissRequest = { showMenu.value = false },
+                        offset = DpOffset((-16).dp, 0.dp)
+                    ) {
+                        DropdownMenuItem(
+                            text = { Text(text = stringResource(id = R.string.notes_screen_menu_log_out)) },
+                            onClick = { /*TODO*/ })
+                    }
+                }
+
+            )
         }
     ) { paddingValues ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(16.dp)
+                .padding(horizontal = 16.dp)
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = stringResource(id = R.string.notes_screen_main_text),
-                    style = MaterialTheme.typography.headlineMedium
-                )
-                IconButton(
-                    onClick = {
-                        viewModel.onEvent(NotesEvent.ToggleOrderSection)
-                    },
-                ) {
-                    Icon(
-                        imageVector = Icons.AutoMirrored.Filled.Sort,
-                        contentDescription = stringResource(id = R.string.notes_screen_sort_icon_description)
-                    )
-                }
-            }
             AnimatedVisibility(
                 visible = state.isOrderSectionVisible
             ) {
@@ -111,7 +131,7 @@ fun NotesScreen(
             LazyColumn(
                 modifier = Modifier.fillMaxSize()
             ) {
-                items(state.notes, key = {it.id ?: it.timestamp}) { note ->
+                items(state.notes, key = { it.id ?: it.timestamp }) { note ->
                     NoteItem(
                         note = note,
                         modifier = Modifier
@@ -121,7 +141,8 @@ fun NotesScreen(
                                     Screen.AddEditNoteScreen.route +
                                             "?noteId=${note.id}&noteColor=${note.color}"
                                 )
-                            }.animateItemPlacement(),
+                            }
+                            .animateItemPlacement(),
                         onDeleteClick = {
                             viewModel.onEvent(NotesEvent.DeleteNote(note))
                             scope.launch {

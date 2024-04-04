@@ -19,6 +19,8 @@
     <string name="noteItem_icon_description">"Notu sil"</string>
     <string name="addEditNote_screen_FAB_icon_description">"Notu kaydet"</string>
     <string name="blank">""</string>
+    <string name="notes_screen_more_icon_description">"Daha fazla"</string>
+    <string name="notes_screen_menu_log_out">"Çıkış yap"</string>
 
     <!--    for feature login-->
     <string name="welcome">"Merhaba!"</string>
