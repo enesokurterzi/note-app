@@ -102,7 +102,11 @@ fun NotesScreen(
                     ) {
                         DropdownMenuItem(
                             text = { Text(text = stringResource(id = R.string.notes_screen_menu_log_out)) },
-                            onClick = { /*TODO*/ })
+                            onClick = {
+                                viewModel.onEvent(NotesEvent.LogOut)
+                                navController.navigate(Screen.LoginScreen.route)
+                            }
+                        )
                     }
                 }
 

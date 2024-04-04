@@ -4,6 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.noteapp.feature_login.domain.use_case.UserUseCases
 import com.example.noteapp.feature_note.domain.model.Note
 import com.example.noteapp.feature_note.domain.use_case.NoteUseCases
 import com.example.noteapp.feature_note.domain.util.NoteOrder
@@ -17,7 +18,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NotesViewModel @Inject constructor(
-    private val noteUseCases: NoteUseCases
+    private val noteUseCases: NoteUseCases,
+    private val userUseCases: UserUseCases
 ) : ViewModel() {
 
     private val _state = mutableStateOf(NotesState())
@@ -62,6 +64,10 @@ class NotesViewModel @Inject constructor(
                 _state.value = state.value.copy(
                     isOrderSectionVisible = !state.value.isOrderSectionVisible
                 )
+            }
+
+            NotesEvent.LogOut -> {
+                userUseCases.signOutUseCase()
             }
         }
     }
