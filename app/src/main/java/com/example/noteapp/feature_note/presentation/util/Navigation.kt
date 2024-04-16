@@ -21,21 +21,41 @@ fun Navigation() {
         navController = navController,
         startDestination = Screen.LoginScreen.route
     ) {
-        composable(route = Screen.LoginScreen.route) {
+        composable(
+            route = Screen.LoginScreen.route,
+            enterTransition = {
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Right,
+                    animationSpec = tween(300)
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(300)
+                )
+            }
+        ) {
             LoginScreen(navController = navController)
         }
         composable(
             Screen.NotesScreen.route,
             enterTransition = {
-                scaleIn(
-                    animationSpec = tween(300),
-                    initialScale = 0.8f
+                slideIntoContainer(
+                    AnimatedContentTransitionScope.SlideDirection.Left,
+                    animationSpec = tween(300)
                 )
             },
             exitTransition = {
                 scaleOut(
                     animationSpec = tween(300),
                     targetScale = 0.8f
+                )
+            },
+            popEnterTransition = {
+                scaleIn(
+                    animationSpec = tween(300),
+                    initialScale = 0.8f
                 )
             }
         ) {
