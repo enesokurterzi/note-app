@@ -14,6 +14,7 @@ import com.example.noteapp.feature_note.domain.model.Note
 import com.example.noteapp.feature_note.domain.use_case.NoteUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,20 +30,24 @@ class AddEditNoteViewModel @Inject constructor(
             hint = R.string.note_title_hint
         )
     )
-    val noteTitle: State<NoteTextFieldState> = _noteTitle
+    val noteTitle: State<NoteTextFieldState>
+        get() = _noteTitle
 
     private val _noteContent = mutableStateOf(
         NoteTextFieldState(
             hint = R.string.note_content_hint
         )
     )
-    val noteContent: State<NoteTextFieldState> = _noteContent
+    val noteContent: State<NoteTextFieldState>
+        get() = _noteContent
 
     private val _noteColor = mutableIntStateOf(Note.noteColors.random().toArgb())
-    val noteColor: IntState = _noteColor
+    val noteColor: IntState
+        get() = _noteColor
 
     private val _eventFlow = MutableSharedFlow<UiEvent>()
-    val eventFlow = _eventFlow.asSharedFlow()
+    val eventFlow :SharedFlow<UiEvent>
+        get() = _eventFlow.asSharedFlow()
 
     private var currentNoteId: String? = null
 

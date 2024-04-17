@@ -13,6 +13,7 @@ import com.example.noteapp.feature_login.domain.use_case.UserUseCases
 import com.google.firebase.auth.FirebaseAuthException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,13 +24,16 @@ class LoginViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _userEmail = mutableStateOf(UserTextFieldState())
-    val userEmail: State<UserTextFieldState> = _userEmail
+    val userEmail: State<UserTextFieldState>
+        get() = _userEmail
 
     private val _userPassword = mutableStateOf(UserTextFieldState())
-    val userPassword: State<UserTextFieldState> = _userPassword
+    val userPassword: State<UserTextFieldState>
+        get() = _userPassword
 
     private val _eventFlow = MutableSharedFlow<UiEvent>()
-    val eventFlow = _eventFlow.asSharedFlow()
+    val eventFlow: SharedFlow<UiEvent>
+        get() = _eventFlow.asSharedFlow()
 
     fun checkCurrentUser(): Boolean {
         userUseCases.getUserUseCase()?.let { return true }
