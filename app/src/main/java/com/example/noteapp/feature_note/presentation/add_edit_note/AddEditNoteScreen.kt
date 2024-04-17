@@ -1,5 +1,6 @@
 package com.example.noteapp.feature_note.presentation.add_edit_note
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -36,11 +37,9 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavController
 import com.example.noteapp.R
 import com.example.noteapp.feature_note.domain.model.Note
@@ -52,8 +51,7 @@ import kotlinx.coroutines.launch
 fun AddEditNoteScreen(
     navController: NavController,
     noteColor: Int,
-    viewmodel: AddEditNoteViewModel = hiltViewModel(),
-    lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current
+    viewmodel: AddEditNoteViewModel = hiltViewModel()
 ) {
     val resources = LocalContext.current.resources
     val titleState = viewmodel.noteTitle.value
@@ -84,7 +82,11 @@ fun AddEditNoteScreen(
         }
     }
 
-    DisposableEffect(lifecycleOwner) {
+    BackHandler {
+        viewmodel.onEvent(AddEditNoteEvent.CheckNote)
+    }
+
+    DisposableEffect(key1 = true) {
         onDispose {
             viewmodel.onEvent(AddEditNoteEvent.SaveNote)
         }
@@ -95,7 +97,7 @@ fun AddEditNoteScreen(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    navController.navigateUp()
+                    viewmodel.onEvent(AddEditNoteEvent.CheckNote)
                 },
                 containerColor = MaterialTheme.colorScheme.primary
             ) {

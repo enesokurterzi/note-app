@@ -46,7 +46,7 @@ class AddEditNoteViewModel @Inject constructor(
         get() = _noteColor
 
     private val _eventFlow = MutableSharedFlow<UiEvent>()
-    val eventFlow :SharedFlow<UiEvent>
+    val eventFlow: SharedFlow<UiEvent>
         get() = _eventFlow.asSharedFlow()
 
     private var currentNoteId: String? = null
@@ -106,8 +106,22 @@ class AddEditNoteViewModel @Inject constructor(
 
             is AddEditNoteEvent.SaveNote -> {
                 viewModelScope.launch {
+                    noteUseCases.addNoteUseCase(
+                        note = Note(
+                            title = noteTitle.value.text,
+                            content = noteContent.value.text,
+                            timestamp = System.currentTimeMillis(),
+                            color = noteColor.intValue,
+                            id = currentNoteId
+                        )
+                    )
+                }
+            }
+
+            AddEditNoteEvent.CheckNote -> {
+                viewModelScope.launch {
                     try {
-                        noteUseCases.addNoteUseCase(
+                        noteUseCases.checkNoteUseCase(
                             note = Note(
                                 title = noteTitle.value.text,
                                 content = noteContent.value.text,
