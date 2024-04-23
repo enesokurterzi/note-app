@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="note_title_hint">"Başlık girin…"</string>
+    <string name="note_content_hint">"İçerik girin…"</string>
+    <string name="save_note_error_alternative">"Not kaydedilemiyor"</string>
+    <string name="addEditNote_screen_FAB_icon_description">"Notu kaydet"</string>
+    <string name="blank">""</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="save_note_error_title">"Notun başlığı boş olamaz."</string>
+    <string name="save_note_error_content">"Notun içeriği boş olamaz."</string>
+</resources>

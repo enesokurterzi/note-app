@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="notes_screen_main_text">"My notes"</string>
+    <string name="notes_screen_FAB_icon_description">"Add note"</string>
+    <string name="notes_screen_sort_icon_description">"Sort"</string>
+    <string name="notes_screen_onDelete_snackBar_message">"Note deleted"</string>
+    <string name="notes_screen_onDelete_snackBar_actionLabel">"Undo"</string>
+    <string name="notes_screen_more_icon_description">"More"</string>
+    <string name="notes_screen_menu_log_out">"Log out"</string>
+    <string name="noteItem_icon_description">"Delete note"</string>
+    <string name="orderSection_button_text_title">"Title"</string>
+    <string name="orderSection_button_text_date">"Date"</string>
+    <string name="orderSection_button_text_color">"Color"</string>
+    <string name="orderSection_button_text_ascending">"Ascending"</string>
+    <string name="orderSection_button_text_descending">"Descending"</string>
+</resources>

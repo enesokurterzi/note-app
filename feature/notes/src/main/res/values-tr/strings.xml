@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="notes_screen_main_text">"Notlarım"</string>
+    <string name="notes_screen_FAB_icon_description">"Not ekle"</string>
+    <string name="notes_screen_sort_icon_description">"Sırala"</string>
+    <string name="notes_screen_onDelete_snackBar_message">"Not silindi"</string>
+    <string name="notes_screen_onDelete_snackBar_actionLabel">"Geri al"</string>
+    <string name="notes_screen_more_icon_description">"Daha fazla"</string>
+    <string name="notes_screen_menu_log_out">"Çıkış yap"</string>
+    <string name="noteItem_icon_description">"Notu sil"</string>
+    <string name="orderSection_button_text_title">"Başlık"</string>
+    <string name="orderSection_button_text_date">"Tarih"</string>
+    <string name="orderSection_button_text_color">"Renk"</string>
+    <string name="orderSection_button_text_ascending">"Artan"</string>
+    <string name="orderSection_button_text_descending">"Azalan"</string>
+</resources>

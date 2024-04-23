@@ -6,20 +6,16 @@
         <State />
       </entry>
       <entry key="app">
-        <State>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\enesc\.android\avd\Pixel_4_API_34.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-04-16T10:50:59.107779500Z" />
-        </State>
+        <State />
+      </entry>
+      <entry key="core">
+        <State />
+      </entry>
+      <entry key="core.data">
+        <State />
+      </entry>
+      <entry key="core.model">
+        <State />
       </entry>
     </value>
   </component>

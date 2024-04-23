@@ -1,43 +1,4 @@
 <resources>
     <string name="app_name">Note App</string>
-    <string name="note_title_hint">"Enter title…"</string>
-    <string name="note_content_hint">"Enter content…"</string>
-    <string name="save_note_error_alternative">"Couldn't save note"</string>
-    <string name="save_note_error_title">"The title of the note can't be empty."</string>
-    <string name="save_note_error_content">"The content of the note can't be empty."</string>
-    <string name="notes_screen_main_text">"My notes"</string>
-    <string name="notes_screen_FAB_icon_description">"Add note"</string>
-    <string name="notes_screen_sort_icon_description">"Sort"</string>
-    <string name="notes_screen_onDelete_snackBar_message">"Note deleted"</string>
-    <string name="notes_screen_onDelete_snackBar_actionLabel">"Undo"</string>
-    <string name="orderSection_button_text_title">"Title"</string>
-    <string name="orderSection_button_text_date">"Date"</string>
-    <string name="orderSection_button_text_color">"Color"</string>
-    <string name="orderSection_button_text_ascending">"Ascending"</string>
-    <string name="orderSection_button_text_descending">"Descending"</string>
-    <string name="noteItem_icon_description">"Delete note"</string>
-    <string name="addEditNote_screen_FAB_icon_description">"Save note"</string>
-    <string name="blank">""</string>
-    <string name="notes_screen_more_icon_description">"More"</string>
-    <string name="notes_screen_menu_log_out">"Log out"</string>
-
-<!--    for feature login-->
-    <string name="welcome">"Hey!"</string>
-    <string name="welcome_login">"Welcome Back"</string>
-    <string name="welcome_sign_up">"Join Now"</string>
-    <string name="login_title">"Login"</string>
-    <string name="login_email">"Email"</string>
-    <string name="login_password">"Password"</string>
-    <string name="sign_up_title">"Sign Up"</string>
-    <string name="sign_up_email">"Enter email id"</string>
-    <string name="sign_up_password">"Create Password"</string>
-    <string name="or_continue">"Or Continue With"</string>
-    <string name="login_error_verified">"Email not verified, please verify your email."</string>
-    <string name="login_error_alternative">"Couldn't do that, something went wrong."</string>
-    <string name="sign_up_successful">"Account created successfully, check email to verify."</string>
-    <string name="sign_up_error_invalid_email">"Email is invalid."</string>
-    <string name="sign_up_error_invalid_password">"Password must be at least 6 character long."</string>
-    <string name="sign_up_error_email_already_in_use">"This email address is already in use by another account."</string>
-
 
 </resources>

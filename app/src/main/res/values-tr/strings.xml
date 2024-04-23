@@ -1,43 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Not Uygulaması</string>
-    <string name="note_title_hint">"Başlık girin…"</string>
-    <string name="note_content_hint">"İçerik girin…"</string>
-    <string name="save_note_error_alternative">"Not kaydedilemiyor"</string>
-    <string name="save_note_error_title">"Notun başlığı boş olamaz."</string>
-    <string name="save_note_error_content">"Notun içeriği boş olamaz."</string>
-    <string name="notes_screen_main_text">"Notlarım"</string>
-    <string name="notes_screen_FAB_icon_description">"Not ekle"</string>
-    <string name="notes_screen_sort_icon_description">"Sırala"</string>
-    <string name="notes_screen_onDelete_snackBar_message">"Not silindi"</string>
-    <string name="notes_screen_onDelete_snackBar_actionLabel">"Geri al"</string>
-    <string name="orderSection_button_text_title">"Başlık"</string>
-    <string name="orderSection_button_text_date">"Tarih"</string>
-    <string name="orderSection_button_text_color">"Renk"</string>
-    <string name="orderSection_button_text_ascending">"Artan"</string>
-    <string name="orderSection_button_text_descending">"Azalan"</string>
-    <string name="noteItem_icon_description">"Notu sil"</string>
-    <string name="addEditNote_screen_FAB_icon_description">"Notu kaydet"</string>
-    <string name="blank">""</string>
-    <string name="notes_screen_more_icon_description">"Daha fazla"</string>
-    <string name="notes_screen_menu_log_out">"Çıkış yap"</string>
-
-    <!--    for feature login-->
-    <string name="welcome">"Merhaba!"</string>
-    <string name="welcome_login">"Hoşgeldin"</string>
-    <string name="welcome_sign_up">"Şimdi katıl"</string>
-    <string name="login_title">"Giriş"</string>
-    <string name="login_email">"Email"</string>
-    <string name="login_password">"Şifre"</string>
-    <string name="sign_up_title">"Kayıt ol"</string>
-    <string name="sign_up_email">"Email adresini gir"</string>
-    <string name="sign_up_password">"Şifre oluştur"</string>
-    <string name="or_continue">"Ya da devam etmek isterseniz"</string>
-    <string name="login_error_verified">"E-posta doğrulanmadı, lütfen e-posta adresinizi doğrulayın."</string>
-    <string name="login_error_alternative">"Bunu yapamadık, bir şeyler ters gitti."</string>
-    <string name="sign_up_successful">"Hesap başarıyla oluşturuldu, doğrulamak için e-postayı kontrol edin."</string>
-    <string name="sign_up_error_invalid_email">"E-posta geçersiz."</string>
-    <string name="sign_up_error_invalid_password">"Şifre en az 6 karakter uzunluğunda olmalıdır."</string>
-    <string name="sign_up_error_email_already_in_use">"Bu mail adresi başka bir hesap tarafından kullanılıyor."</string>
 
 </resources>

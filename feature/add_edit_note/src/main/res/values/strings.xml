@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="note_title_hint">"Enter title…"</string>
+    <string name="note_content_hint">"Enter content…"</string>
+    <string name="save_note_error_alternative">"Couldn't save note"</string>
+    <string name="addEditNote_screen_FAB_icon_description">"Save note"</string>
+    <string name="blank">""</string>
+</resources>

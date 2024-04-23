@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="welcome">"Hey!"</string>
+    <string name="welcome_login">"Welcome Back"</string>
+    <string name="welcome_sign_up">"Join Now"</string>
+    <string name="login_title">"Login"</string>
+    <string name="login_email">"Email"</string>
+    <string name="login_password">"Password"</string>
+    <string name="sign_up_title">"Sign Up"</string>
+    <string name="sign_up_email">"Enter email id"</string>
+    <string name="sign_up_password">"Create Password"</string>
+    <string name="or_continue">"Or Continue With"</string>
+    <string name="login_error_verified">"Email not verified, please verify your email."</string>
+    <string name="login_error_alternative">"Couldn't do that, something went wrong."</string>
+    <string name="sign_up_successful">"Account created successfully, check email to verify."</string>
+    <string name="sign_up_error_invalid_email">"Email is invalid."</string>
+    <string name="sign_up_error_invalid_password">"Password must be at least 6 character long."</string>
+    <string name="sign_up_error_email_already_in_use">"This email address is already in use by another account."</string>
+    <string name="blank">""</string>
+</resources>
