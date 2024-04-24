@@ -75,7 +75,12 @@ fun NotesScreen(
         },
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text(text = stringResource(id = R.string.notes_screen_main_text)) },
+                title = {
+                    Text(
+                        text = stringResource(id = R.string.notes_screen_main_text),
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
+                },
                 navigationIcon = {
                     IconButton(
                         onClick = {
@@ -84,7 +89,8 @@ fun NotesScreen(
                     ) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.Sort,
-                            contentDescription = stringResource(id = R.string.notes_screen_sort_icon_description)
+                            contentDescription = stringResource(id = R.string.notes_screen_sort_icon_description),
+                            tint = MaterialTheme.colorScheme.onBackground
                         )
                     }
                 },
@@ -92,7 +98,8 @@ fun NotesScreen(
                     IconButton(onClick = { showMenu.value = true }) {
                         Icon(
                             imageVector = Icons.Default.MoreVert,
-                            contentDescription = stringResource(id = R.string.notes_screen_more_icon_description)
+                            contentDescription = stringResource(id = R.string.notes_screen_more_icon_description),
+                            tint = MaterialTheme.colorScheme.onBackground
                         )
                     }
                     DropdownMenu(
@@ -101,7 +108,12 @@ fun NotesScreen(
                         offset = DpOffset((-16).dp, 0.dp)
                     ) {
                         DropdownMenuItem(
-                            text = { Text(text = stringResource(id = R.string.notes_screen_menu_log_out)) },
+                            text = {
+                                Text(
+                                    text = stringResource(id = R.string.notes_screen_menu_log_out),
+                                    color = MaterialTheme.colorScheme.onBackground
+                                )
+                            },
                             onClick = {
                                 viewModel.onEvent(NotesEvent.LogOut)
                                 navController.navigate(backwardDestination) {
