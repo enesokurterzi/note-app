@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.googleServices) apply false
     alias(libs.plugins.jetbrainsKotlinJvm) apply false
     alias(libs.plugins.androidLibrary) apply false
+    alias(libs.plugins.androidLibrariesMapsplatformSecrets) apply false
 }
 
 private typealias AndroidExtension = com.android.build.api.dsl.CommonExtension<*, *, *, *, *, *>

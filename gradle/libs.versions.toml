@@ -25,6 +25,9 @@ firebaseAuth = "22.3.1"
 appcompat = "1.6.1"
 material = "1.11.0"
 jetbrainsKotlinJvm = "1.9.22"
+mapsplatformSecrets = "2.0.1"
+credential = "1.2.2"
+googleid = "1.1.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -56,6 +59,10 @@ firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+credentials = { group = "androidx.credentials", name = "credentials", version.ref = "credential" }
+credentials-play-services-auth = { group = "androidx.credentials", name = "credentials-play-services-auth", version.ref = "credential" }
+googleid = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleid" }
+
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -65,4 +72,5 @@ googleDevtoolsKsp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 googleServices = { id = "com.google.gms.google-services", version.ref = "googleServices" }
 jetbrainsKotlinJvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 androidLibrary = { id = "com.android.library", version.ref = "agp" }
+androidLibrariesMapsplatformSecrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "mapsplatformSecrets" }
 
