@@ -10,3 +10,5 @@ class InvalidEmailException: Exception()
 class InvalidPasswordException: Exception()
 
 class NotVerifiedEmailException: Exception()
+
+class GetCredentialException: Exception()

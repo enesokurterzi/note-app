@@ -2,6 +2,7 @@ package com.example.data.di
 
 import com.example.data.repository.note.NoteRepository
 import com.example.data.repository.note.NoteRepositoryFirebaseImpl
+import com.example.data.repository.user.GoogleUserRepository
 import com.example.data.repository.user.UserRepository
 import com.example.data.repository.user.UserRepositoryImpl
 import com.google.firebase.Firebase
@@ -40,6 +41,12 @@ internal object DataModule {
     @Provides
     @Singleton
     fun provideUserRepository(firebaseAuth: FirebaseAuth): UserRepository {
+        return UserRepositoryImpl(firebaseAuth)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGoogleUserRepository(firebaseAuth: FirebaseAuth): GoogleUserRepository {
         return UserRepositoryImpl(firebaseAuth)
     }
 }
