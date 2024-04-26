@@ -1,6 +1,7 @@
 package com.example.domain.di
 
 import com.example.data.repository.note.NoteRepository
+import com.example.data.repository.user.GoogleUserRepository
 import com.example.data.repository.user.UserRepository
 import com.example.domain.use_case.note.*
 import com.example.domain.use_case.user.*
@@ -15,12 +16,13 @@ import javax.inject.Singleton
 internal object DomainModule {
     @Provides
     @Singleton
-    fun provideUserUseCases(repository: UserRepository): UserUseCases {
+    fun provideUserUseCases(repository: UserRepository, googleRepository: GoogleUserRepository): UserUseCases {
         return UserUseCases(
             loginUseCase = LoginUseCase(repository),
             signUpUseCase = SignUpUseCase(repository),
             signOutUseCase = SignOutUseCase(repository),
-            getUserUseCase = GetUserUseCase(repository)
+            getUserUseCase = GetUserUseCase(repository),
+            signInWithGoogleUseCase = SignInWithGoogleUseCase(googleRepository)
         )
     }
 
