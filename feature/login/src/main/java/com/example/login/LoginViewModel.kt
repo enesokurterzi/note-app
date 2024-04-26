@@ -5,6 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.use_case.user.UserUseCases
+import com.example.model.GetCredentialException
 import com.example.model.InvalidEmailException
 import com.example.model.InvalidPasswordException
 import com.example.model.NotVerifiedEmailException
@@ -16,6 +17,7 @@ import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.coroutines.cancellation.CancellationException
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
@@ -127,6 +129,29 @@ class LoginViewModel @Inject constructor(
                         )
                     }
                 }
+            }
+
+            is LoginEvent.SignInWithGoogle -> {
+                viewModelScope.launch {
+                    try {
+                        userUseCases.signInWithGoogleUseCase(event.context)
+                        _eventFlow.emit(UiEvent.Login)
+                    } catch (_: CancellationException) {
+                    } catch (e: GetCredentialException) {
+                        _eventFlow.emit(
+                            UiEvent.ShowSnackBar(
+                                message = R.string.sign_up_error_google_credential
+                            )
+                        )
+                    } catch (e: Exception) {
+                        _eventFlow.emit(
+                            UiEvent.ShowSnackBar(
+                                message = e.message ?: R.string.login_error_alternative
+                            )
+                        )
+                    }
+                }
+
             }
         }
     }

@@ -30,6 +30,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.login.components.OtherSignInData
 import com.example.login.components.PagerContent
 import com.example.login.components.WelcomeSection
 import kotlinx.coroutines.flow.collectLatest
@@ -42,7 +43,8 @@ fun LoginScreen(
     forwardDestination: String,
     viewModel: LoginViewModel = hiltViewModel()
 ) {
-    val resources = LocalContext.current.resources
+    val context = LocalContext.current
+    val resources = context.resources
     val emailState = viewModel.userEmail.value
     val passwordState = viewModel.userPassword.value
     val scope = rememberCoroutineScope()
@@ -158,22 +160,41 @@ fun LoginScreen(
                         .weight(1f)
                 ) { page ->
                     when (page) {
-                        0 -> PagerContent(
-                            emailTitle = stringResource(id = R.string.login_email),
-                            emailState = emailState,
-                            passwordTitle = stringResource(id = R.string.login_password),
-                            passwordState = passwordState,
-                            buttonTitle = stringResource(id = R.string.login_title),
-                            onEmailChange = {
-                                viewModel.onEvent(LoginEvent.EnteredEmail(it))
-                            },
-                            onPasswordChange = {
-                                viewModel.onEvent(LoginEvent.EnteredPassword(it))
-                            },
-                            onButtonClick = {
-                                viewModel.onEvent(LoginEvent.Login)
-                            }
-                        )
+                        0 -> {
+                            PagerContent(
+                                emailTitle = stringResource(id = R.string.login_email),
+                                emailState = emailState,
+                                passwordTitle = stringResource(id = R.string.login_password),
+                                passwordState = passwordState,
+                                buttonTitle = stringResource(id = R.string.login_title),
+                                onEmailChange = {
+                                    viewModel.onEvent(LoginEvent.EnteredEmail(it))
+                                },
+                                onPasswordChange = {
+                                    viewModel.onEvent(LoginEvent.EnteredPassword(it))
+                                },
+                                onButtonClick = {
+                                    viewModel.onEvent(LoginEvent.Login)
+                                },
+                                otherMethodList = listOf(
+                                    OtherSignInData(
+                                        modifier = Modifier.weight(1f),
+                                        iconText = "Google",
+                                        onButtonClick = {
+                                            viewModel.onEvent(LoginEvent.SignInWithGoogle(context))
+                                        },
+                                        icon = R.drawable.google
+                                    ),
+                                    OtherSignInData(
+                                        modifier = Modifier.weight(1f),
+                                        iconText = "Facebook",
+                                        onButtonClick = {}, //TODO
+                                        icon = R.drawable.facebook
+                                    )
+                                )
+                            )
+                        }
+
 
                         1 -> PagerContent(
                             emailTitle = stringResource(id = R.string.sign_up_email),
@@ -192,7 +213,6 @@ fun LoginScreen(
                             }
                         )
                     }
-
                 }
 
             }

@@ -18,4 +18,5 @@
     <string name="sign_up_error_invalid_password">"Password must be at least 6 character long."</string>
     <string name="sign_up_error_email_already_in_use">"This email address is already in use by another account."</string>
     <string name="blank">""</string>
+    <string name="sign_up_error_google_credential">"Couldn't find any google account."</string>
 </resources>

@@ -17,4 +17,5 @@
     <string name="sign_up_error_invalid_password">"Şifre en az 6 karakter uzunluğunda olmalıdır."</string>
     <string name="sign_up_error_email_already_in_use">"Bu mail adresi başka bir hesap tarafından kullanılıyor."</string>
     <string name="blank">""</string>
+    <string name="sign_up_error_google_credential">"Hiç google hesabı bulunamadı."</string>
 </resources>
