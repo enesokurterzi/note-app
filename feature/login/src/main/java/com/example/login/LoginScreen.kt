@@ -184,12 +184,6 @@ fun LoginScreen(
                                             viewModel.onEvent(LoginEvent.SignInWithGoogle(context))
                                         },
                                         icon = R.drawable.google
-                                    ),
-                                    OtherSignInData(
-                                        modifier = Modifier.weight(1f),
-                                        iconText = "Facebook",
-                                        onButtonClick = {}, //TODO
-                                        icon = R.drawable.facebook
                                     )
                                 )
                             )
