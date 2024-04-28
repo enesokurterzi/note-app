@@ -64,20 +64,20 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     //Dagger - Hilt
-    implementation (libs.hilt)
-    ksp (libs.hilt.compiler)
-    ksp (libs.androidx.hilt.compiler)
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
+    ksp(libs.androidx.hilt.compiler)
 
     // Compose dependencies
-    implementation (libs.androidx.navigation.compose)
-    implementation (libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.hilt.navigation.compose)
 
 
     // splash screen
     implementation(libs.androidx.splashscreen)
 
-    implementation(project(":feature:notes"))
-    implementation(project(":feature:add_edit_note"))
-    implementation(project(":feature:login"))
+    implementation(projects.feature.notes)
+    implementation(projects.feature.addEditNote)
+    implementation(projects.feature.login)
 
 }

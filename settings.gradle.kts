@@ -19,7 +19,8 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Note App"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS") // to create "projects" from  RootProjectAccessor for better access to modules.
+rootProject.name = "Note_App"
 include(":app")
 include(":core")
 include(":core:data")

@@ -15,7 +15,8 @@ android {
 }
 
 dependencies {
-    api(project(":core:model"))
+
+    api(projects.core.model)
 
     implementation(libs.jetbrains.kotlinx.coroutines.core)
 
@@ -24,8 +25,8 @@ dependencies {
     implementation(libs.firebase.auth)
 
     //Dagger - Hilt
-    implementation (libs.hilt)
-    ksp (libs.hilt.compiler)
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
 
     // Google services
     implementation(libs.credentials)

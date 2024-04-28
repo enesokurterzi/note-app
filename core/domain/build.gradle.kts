@@ -10,13 +10,13 @@ android {
 }
 
 dependencies {
-    implementation(project(":core:data"))
+    implementation(projects.core.data)
 
     api(libs.firebase.auth)
 
     //Dagger - Hilt
-    implementation (libs.hilt)
-    ksp (libs.hilt.compiler)
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
 
     testImplementation(libs.junit)
 }

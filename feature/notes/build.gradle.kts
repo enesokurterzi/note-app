@@ -39,18 +39,18 @@ dependencies {
     implementation(platform(libs.androidx.compose.bom))
 
     //Dagger - Hilt
-    implementation (libs.hilt)
-    ksp (libs.hilt.compiler)
-    ksp (libs.androidx.hilt.compiler)
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
+    ksp(libs.androidx.hilt.compiler)
 
     // Compose dependencies
-    implementation (libs.androidx.lifecycle.viewmodel.compose)
-    implementation (libs.androidx.navigation.compose)
-    implementation (libs.androidx.material.icons.extended)
-    implementation (libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.material.icons.extended)
+    implementation(libs.androidx.hilt.navigation.compose)
 
-    implementation(project(":core:domain"))
-    implementation(project(":core:model"))
+    implementation(projects.core.domain)
+    implementation(projects.core.model)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
