@@ -4,6 +4,7 @@ Description
 -------------
 
 <p> The project can keep your notes. You can edit your notes and delete them. You need to log in with e-mail and password. You can also use Google authentication to log in. <p>
+To see the sqlite version of the project you can go branches ->  <a href="https://github.com/enesokurterzi/note-app/tree/sqlite_version" target="_blank">sqlite_version</a>
 
 <table align="center">
   <tr>
