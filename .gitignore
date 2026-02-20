@@ -173,3 +173,6 @@ fabric.properties
 # Sentry Config File
 #sentry.properties
 /app/release/output-metadata.json
+
+# Google Services (e.g. APIs or Firebase)
+google-services.json
